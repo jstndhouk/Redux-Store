@@ -36,8 +36,6 @@ db.once('open', () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     const db = require('./config/connection');
 const { User, Product, Category } = require('./models');
-
-db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
@@ -186,7 +184,7 @@ db.once('open', async () => {
   });
 
   console.log('users seeded');
-});
+
 
   });
 });
