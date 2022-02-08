@@ -25,18 +25,18 @@ app.use('/images', express.static(path.join(__dirname, '../client/images')));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 db.once('open', () => {
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    const db = require('./config/connection');
-const { User, Product, Category } = require('./models');
-  await Category.deleteMany();
+    const { User, Product, Category } = require('./models');
+    await Category.deleteMany();
 
   const categories = await Category.insertMany([
     { name: 'Food' },
